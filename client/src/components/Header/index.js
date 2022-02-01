@@ -8,6 +8,7 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div
@@ -31,6 +32,11 @@ const Header = () => {
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
+              <li id="navbtns" className="navbar-nav">
+                <a className="nav-link" href="/updateuser">
+                  Update User
+                </a>
+              </li>
             </>
           ) : (
             <>

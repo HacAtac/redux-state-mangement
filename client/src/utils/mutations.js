@@ -24,3 +24,46 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser(
+    $_id: ID!
+    $firstName: String
+    $lastName: String
+    $email: String
+    $password: String
+    $address: String
+    $city: String
+    $state: String
+    $zip: String
+  ) {
+    updateUser(
+      _id: $_id
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+      address: $address
+      city: $city
+      state: $state
+      zip: $zip
+    ) {
+      firstName
+      lastName
+      email
+      password
+      address
+      city
+      state
+      zip
+    }
+  }
+`;
+
+export const REMOVE_USER = gql`
+  mutation removeUser($_id: ID!) {
+    removeUser(_id: $_id) {
+      _id
+    }
+  }
+`;
