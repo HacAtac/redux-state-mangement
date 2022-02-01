@@ -24,6 +24,11 @@ const resolvers = {
 
       return { token, user };
     },
+    // addUser: async (parent, { firstName, password, email }, context, info) => {
+    //   const user = await User.create({ firstName, password, email });
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
     login: async (parent, args) => {
       const user = await User.findOne({
         $or: [{ email: args.email }],
