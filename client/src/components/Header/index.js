@@ -18,7 +18,7 @@ const Header = () => {
         <div>
           <Link className="text-light" to="/">
             <h1 className="m-0" id="header-title">
-              CRUD App with GraphQL and Redux
+              CRUD App with React Front End and GraphQL Back End
             </h1>
           </Link>
           <p className="m-0" id="header-p">
