@@ -28,15 +28,17 @@ const Header = () => {
         <div id="header-functions">
           {Auth.loggedIn() ? (
             <>
-              <span>Hey there, {Auth.getProfile().data.user}!</span>
+              <span id="loggedIn-User">
+                Hey there, {Auth.getProfile().data.email}!
+              </span>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
-              <li id="navbtns" className="navbar-nav">
+              {/* <li id="navbtns" className="navbar-nav">
                 <a className="nav-link" href="/updateuser">
                   Update User
                 </a>
-              </li>
+              </li> */}
             </>
           ) : (
             <>

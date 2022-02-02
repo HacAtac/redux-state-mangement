@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
@@ -30,35 +29,79 @@ const Home = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
+  //   return (
+  //     <div className="container">
+  //       <div className="row">
+  //         {data.users.map((user) => (
+  //           <div className="col-md-4" key={user._id}>
+  //             <div className="card">
+  //               <div className="card-body">
+  //                 <h5 className="card-title">{user.firstName}</h5>
+  //                 <p className="card-text">{user.lastName}</p>
+  //                 <p className="card-text">{user.email}</p>
+  //                 <p className="card-text">{user.address}</p>
+  //                 <p className="card-text">{user.city}</p>
+  //                 <p className="card-text">{user.state}</p>
+  //                 <p className="card-text">{user.zip}</p>
+  //                 <Link to={`/updateuser/${user._id}`}>
+  //                   <button className="btn btn-primary">Update</button>
+  //                 </Link>
+  //                 <button
+  //                   className="btn btn-danger"
+  //                   onClick={() => removeUser({ variables: { _id: user._id } })}
+  //                 >
+  //                   Delete
+  //                 </button>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   );
+
+  //here I need to return the data from the query and map through it if user is logged in, if not, show a message saying you need to log in
+  //using Auth to check if the user is logged in or not and if they are, show the data, if not, show a message saying you need to log in
   return (
     <div className="container">
-      <div className="row">
-        {data.users.map((user) => (
-          <div className="col-md-4" key={user._id}>
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">{user.firstName}</h5>
-                <p className="card-text">{user.lastName}</p>
-                <p className="card-text">{user.email}</p>
-                <p className="card-text">{user.address}</p>
-                <p className="card-text">{user.city}</p>
-                <p className="card-text">{user.state}</p>
-                <p className="card-text">{user.zip}</p>
-                <Link to={`/updateuser/${user._id}`}>
-                  <button className="btn btn-primary">Update</button>
-                </Link>
-
-                <button
-                  className="btn btn-danger"
-                  onClick={() => removeUser({ variables: { _id: user._id } })}
-                >
-                  Delete
-                </button>
+      {Auth.loggedIn() ? (
+        <>
+          <h1>Welcome {Auth.loggedIn().firstName}</h1>
+          <h2>Here are all the users</h2>
+          <div className="row">
+            {data.users.map((user) => (
+              <div className="col-md-4" key={user._id}>
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{user.firstName}</h5>
+                    <p className="card-text">{user.lastName}</p>
+                    <p className="card-text">{user.email}</p>
+                    <p className="card-text">{user.address}</p>
+                    <p className="card-text">{user.city}</p>
+                    <p className="card-text">{user.state}</p>
+                    <p className="card-text">{user.zip}</p>
+                    <Link to={`/updateuser/${user._id}`}>
+                      <button className="btn btn-primary">Update</button>
+                    </Link>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() =>
+                        removeUser({ variables: { _id: user._id } })
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      ) : (
+        <h1 id="logout-view">
+          Please sign up, or login to view/update the Users Data.
+        </h1>
+      )}
     </div>
   );
 };
