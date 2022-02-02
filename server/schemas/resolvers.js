@@ -53,8 +53,13 @@ const resolvers = {
       console.log(service);
       return { service };
     },
-    removeUser: async (parent, { _id }) => {
-      return Service.findeOneAndDelete({ _id: _id });
+
+    //removeUser so that it sets isActive to false instead of deleting the user
+    removeUser: async (parent, args) => {
+      const { _id } = args;
+      const service = await User.findOneAndUpdate(_id, { isActive: false });
+      console.log(service);
+      return { service };
     },
   },
 };

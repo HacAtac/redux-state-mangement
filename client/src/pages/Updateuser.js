@@ -6,6 +6,7 @@ import { QUERY_USERS } from "../utils/queries";
 function UpdateUser() {
   // here I need to update current services with the new service data with a form that will be filled out by the user
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -21,6 +22,7 @@ function UpdateUser() {
     variables: {
       _id: "_id",
       email: email,
+      password: password,
       firstName: firstName,
       lastName: lastName,
       address: address,
@@ -65,6 +67,13 @@ function UpdateUser() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)} //were using state to update the name state
+          />
+          <h3 className="card-title">Password</h3>
+          <input
+            className="input-field"
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <h3 className="card-title">First Name</h3>
           <input

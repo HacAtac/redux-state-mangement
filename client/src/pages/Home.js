@@ -47,6 +47,7 @@ const Home = () => {
                 <Link to={`/updateuser/${user._id}`}>
                   <button className="btn btn-primary">Update</button>
                 </Link>
+
                 <button
                   className="btn btn-danger"
                   onClick={() => removeUser({ variables: { _id: user._id } })}
