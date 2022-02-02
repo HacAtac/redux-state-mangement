@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className=" mb-4 py-3 flex-row align-center">
       <div
         className="container flex-row justify-space-between-lg justify-center align-center"
         id="header"
@@ -31,7 +31,11 @@ const Header = () => {
               <span id="loggedIn-User">
                 Hey there, {Auth.getProfile().data.email}!
               </span>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <button
+                className="btn btn-lg btn-light m-2"
+                id="logout-btn"
+                onClick={logout}
+              >
                 Logout
               </button>
               {/* <li id="navbtns" className="navbar-nav">
