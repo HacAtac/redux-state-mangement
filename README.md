@@ -62,3 +62,4 @@ Sixth Refresh Page to show CRUD method changes.
 
 - login (Authentication)
 - CRUD methods on Users.
+- Conditionally Renders With Auth
