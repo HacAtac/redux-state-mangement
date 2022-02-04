@@ -19,8 +19,12 @@ import Updateuser from "./pages/Updateuser";
 //   uri: "/graphql",
 // });
 
+// const httpLink = createHttpLink({
+//   uri: "http://localhost:3001/graphql",
+// });
+
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "https://saltshaker.herokuapp.com/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
